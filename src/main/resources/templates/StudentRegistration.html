@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>SpringBoot WebMVC CURD Operation with Thymeleaf UI and
+	MySql Database</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-info">
+			<a class="navbar-brand text-white" href="#">Student Application</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link text-white"
+						th:href="@{/student/register}">Registration</a></li>
+				</ul>
+
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link text-white"
+						th:href="@{/student/all}">All</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="card">
+			<div class="card-head bg-primary text-white text-center">
+				<h2>WELCOME TO STUDENT REGISTRATION PAGE</h2>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/student/save}" method="post"
+					th:object="${student}">
+
+					<div class="row">
+						<div class="col-4">NAME</div>
+						<div class="col-6">
+							<input type="text" th:field=*{stdName} class="form-control" />
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-4">GENDER</div>
+						<div class="col-6">
+							<input type="radio" th:field=*{stdGen} value="Female" />&nbsp; Female
+							<input type="radio" th:field=*{stdGen} value="Male" class="ml-5"/>&nbsp; Male
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-4">FEE</div>
+						<div class="col-6">
+							<input type="text" th:field=*{stdFee} class="form-control" />
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-4">COURSE</div>
+						<div class="col-6">
+							<select th:field="*{stdCourse}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="CORE">CORE</option>
+								<option value="ADV">ADV</option>
+								<option value="SPRING">SPRING</option>
+								<option value="BOOTMS">BOOTMS</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-4">SLOT</div>
+						<div class="col-6">
+							<input type="checkbox" th:field="*{stdSlot}" value="7 AM">&nbsp;7AM
+							<input type="checkbox" th:field="*{stdSlot}" value="9 AM" class="ml-3">&nbsp;9AM
+							<input type="checkbox" th:field="*{stdSlot}" value="11 AM" class="ml-3">&nbsp;11AM
+							<input type="checkbox" th:field="*{stdSlot}" value="4 PM" class="ml-3">&nbsp;4PM
+							<input type="checkbox" th:field="*{stdSlot}" value="6 PM" class="ml-3">&nbsp;6PM
+							<input type="checkbox" th:field="*{stdSlot}" value="8 PM" class="ml-3">&nbsp;8PM
+						</div>
+					</div>
+
+					<div class="row mt-3">
+						<div class="col-4">ADDRESS</div>
+						<div class="col-6">
+							<textarea th:field="*{stdAddr}" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class=" d-flex justify-content-center mt-3">
+						<input type="submit" value="Register Student" class="btn btn-success" />
+					</div>
+					
+				</form>
+			</div>
+			<div class="card-footer bg-info text-white text-center">
+				<span th:text="${message}"></span>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

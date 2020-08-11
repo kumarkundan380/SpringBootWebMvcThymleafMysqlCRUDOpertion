@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Student?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+    username: root
+    password: jaimatadi
+  
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true  
+
+    
+    
+    
+
+    
